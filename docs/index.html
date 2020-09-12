@@ -9,10 +9,6 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/ChuckCSS/dist/chuckcss.min.css"
         crossorigin="anonymous">
-    <link
-        media="screen"
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/maxwell-k/dejavu-sans-mono-web-font@2.37/index.css">
     <style>
     .container { margin: 1em; }
     .buttons button.cc-thin {
@@ -24,6 +20,13 @@
     form textarea {
         height: 25em;
         font-family: 'DejaVu Sans Mono', Menlo, monospace;
+    }
+    @font-face {
+        font-family: "DejaVu Sans Mono";
+        font-style: normal;
+        font-weight: normal;
+        src: local(DejaVu Sans Mono), local(DejaVuSansMono),
+            url(DejaVuSansMono_LYaPAS.woff) format("woff");
     }
     </style>
     <script>
@@ -42,10 +45,10 @@
            this.elements.codearea = document.querySelector('.codearea');
             
            const keyList = [
-               "+", "-", "×", "×̅", ":", "¬", "∨", "∧",
-               "⊕", "▽", "⊢", "<", ">", "⇤ ", "⇒", "⇔",
-               "▵", "▵̅", "○", "○̄", "→", "○→", "↦", "⇻",
-               "!", "Ẋ", "Ẍ", "pri", "pri₁₀", ".",
+               "§", "+", "-", "×", "×̅", ":", "¬", "∨",
+               "∧", "⊕", "▽", "⊢", "<", ">", "⇤", "⇒",
+               "⇔", "△", "△̅", "○", "○̅", "→", "○→", "↦",
+               "⇻", "!", "Ẋ", "Ẍ", "pri", "pri₁₀", ".",
                "𝐚", "𝐛", "𝐜", "𝐝", "𝐞", "𝐟", "𝐠", "𝐡",
                "𝐀", "𝐁", "𝐂", "𝐃", "𝐄", "𝐅", "𝐆", "𝐇",
            ];

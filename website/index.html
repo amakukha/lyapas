@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LYaPAS-70 editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link
+        media="screen"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/ChuckCSS/dist/chuckcss.min.css"
+        crossorigin="anonymous">
+    <style>
+    .container { margin: 1em; }
+    .buttons button.cc-thin {
+        font-size: 100%;
+        padding: 0.4em 1em;
+        font-family: 'DejaVu Sans Mono', Menlo, monospace;
+    } 
+    .buttons button.cc-thin sub { font-size: 88%; } 
+    form textarea {
+        height: 25em;
+        font-family: 'DejaVu Sans Mono', Menlo, monospace;
+    }
+    </style>
+    <script>
+    const Keypad = {
+        elements: {
+            buttons: null,
+            codearea: null,
+        },
+
+        properties: {
+            value: "",
+        },
+
+        init() {
+           this.elements.buttons = document.querySelector('.buttons');
+           this.elements.codearea = document.querySelector('.codearea');
+            
+           const keyList = [
+               "+", "-", "×", "×̅", ":", "¬", "∨", "∧",
+               "⊕", "▽", "⊢", "<", ">", "⇤ ", "⇒", "⇔",
+               "▵", "▵̅", "○", "○̄", "→", "○→", "↦", "⇻",
+               "!", "Ẋ", "Ẍ", "pri", "pri₁₀", ".",
+               "𝐚", "𝐛", "𝐜", "𝐝", "𝐞", "𝐟", "𝐠", "𝐡",
+               "𝐀", "𝐁", "𝐂", "𝐃", "𝐄", "𝐅", "𝐆", "𝐇",
+           ];
+
+            keyList.forEach(key => {
+                const keyEl = document.createElement("button");
+                keyEl.classList.add("cc-thin");
+                keyEl.setAttribute("type", "button");
+                keyEl.innerText = key;
+                keyEl.addEventListener("click", () => {
+                    this.properties.value = this.elements.codearea.value + key;
+                    this.elements.codearea.value = this.properties.value;
+                });
+                this.elements.buttons.appendChild(keyEl);
+            });
+        },
+    };
+    window.addEventListener("DOMContentLoaded", function() {
+        Keypad.init();
+    });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>LYaPAS-70</h1>
+    <form>
+        <button class="cc-bg-green">Run <span id="symbol">▶️ </span></button>
+        <!-- button class="cc-bg-red">Halt <span>■</span></button -->
+        <textarea class="codearea" placeholder="Type your program here" rows="20"></textarea>
+        <div class="buttons">
+        </div>
+        <!-- ul>
+            <li>To get a bold character, you can enter it twice using your device's keyboard.</li>
+        </ul -->
+    </form>
+</div>
+</body>
+</html>
